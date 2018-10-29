@@ -125,7 +125,7 @@ defmodule Bamboo.SMTPAdapter do
   end
   defp add_html_body(body, %Bamboo.Email{html_body: html_body}, multi_part_delimiter) do
     body
-    |> add_multipart_delimiter(multi_part_delimiter)
+    # |> add_multipart_delimiter(multi_part_delimiter)
     |> add_smtp_header_line("Content-Type", "text/html;charset=UTF-8")
     |> add_smtp_line("")
     |> add_smtp_line(html_body)
@@ -254,16 +254,16 @@ defmodule Bamboo.SMTPAdapter do
     |> add_to(email)
     |> add_custom_headers(email)
     |> add_mime_header
-    |> add_multipart_mixed_header(multi_part_mixed_delimiter)
-    |> add_ending_header
-    |> add_multipart_delimiter(multi_part_mixed_delimiter)
-    |> add_multipart_header(multi_part_delimiter)
-    |> add_ending_header
-    |> add_text_body(email, multi_part_delimiter)
+    # |> add_multipart_mixed_header(multi_part_mixed_delimiter)
+    # |> add_ending_header
+    # |> add_multipart_delimiter(multi_part_mixed_delimiter)
+    # |> add_multipart_header(multi_part_delimiter)
+    # |> add_ending_header
+    # |> add_text_body(email, multi_part_delimiter)
     |> add_html_body(email, multi_part_delimiter)
-    |> add_ending_multipart(multi_part_delimiter)
-    |> add_attachments(email, multi_part_mixed_delimiter)
-    |> add_ending_multipart(multi_part_mixed_delimiter)
+    # |> add_ending_multipart(multi_part_delimiter)
+    # |> add_attachments(email, multi_part_mixed_delimiter)
+    # |> add_ending_multipart(multi_part_mixed_delimiter)
   end
 
   defp build_error({:ok, value}, _key, errors) when value != nil, do: errors
